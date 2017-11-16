@@ -71,7 +71,7 @@ active proctype Game() {
 ```
 $ spin -f '<> goal' >wolf.ltl
 $ spin -a -N wolf.ltl wolf.pml
-$ cc -O pan.c -o pan
+$ cc -O -DSAFETY pan.c -o pan
 $ ./pan
 ```
 
