@@ -66,12 +66,14 @@ active proctype Game() {
 
 ### 検証による求解
 
-`<> goal` をnever claim化して検証 ( `!<> goal` であることを検証 → goal に到達する実行系列を反例)。
+`<> goal` をnever claim化して検証 <br />
+( `!<> goal` であることを検証 → goal に到達する実行系列を反例)。
 
 ```
-$ spin -f '<> goal' >wolf.ltl
-$ spin -a -N wolf.ltl wolf.pml
-$ cc -O -DSAFETY pan.c -o pan
-$ ./pan
+$ spin -f '<> goal' >wolf.ltl      -- never claim生成
+$ spin -a -N wolf.ltl wolf.pml     -- pan.cを生成
+$ cc -O -DSAFETY pan.c -o pan      -- panをコンパイル
+$ ./pan                            -- 検証
+$ spin -t -p -g wolf.pml           -- 実行系列を表示
 ```
 
