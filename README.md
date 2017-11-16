@@ -18,7 +18,7 @@
 ### 必要な変数
 
 * 羊: 岸A, 舟, 岸B それぞれの人数 (lambA, lambS, lambB)
-* 狼: 　　　　　　　〃　　　　　　 (wolfA, wolfS, wolfB)
+* 狼: 　　　　　　〃　　　　　　 (wolfA, wolfS, wolfB)
 * 舟: どちらの岸にいるか (ship)
 
 ### 振る舞い
@@ -62,5 +62,16 @@ active proctype Game() {
      羊が安全 (そうでなければここで停止)
   od
 }
+```
+
+### 検証による求解
+
+`<> goal` をnever claim化して検証 ( `!<> goal` であることを検証 → goal に到達する実行系列を反例)。
 
 ```
+$ spin -f '<> goal' >wolf.ltl
+$ spin -a -N wolf.ltl wolf.pml
+$ cc -O pan.c -o pan
+$ ./pan
+```
+
